@@ -20,7 +20,7 @@ app.get('/', (req,res) => {
     res.json({message: 'api toko buku'})
 });
 
-app.use(`${URL}/users`,authRouter);
-app.use(`${URL}/categories`, categoriesRouter);
+app.use(`${URL}`,authRouter);
+app.use(`${URL}`, categoriesRouter);
 
 module.exports = app;
