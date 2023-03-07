@@ -54,4 +54,24 @@ module.exports = {
       next(err);
     }
   },
+
+  deleteCategories: (req, res, next) => {
+    Category.findOne({
+      where: {
+        id: req.params.id,
+        user: req.user.id,
+      },
+    })
+      .then((categories) => {
+        if (categories) {
+          categories.destroy();
+
+          res.status(200).json({
+            message: "success delete categories",
+            data: categories
+          })
+        }
+      })
+      .catch((err) => {});
+  },
 };
